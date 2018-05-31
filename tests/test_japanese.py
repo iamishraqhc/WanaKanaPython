@@ -1,6 +1,6 @@
 import pytest
 
-from wanakana.japanese import is_japanese, is_romaji, is_mixed
+from wanakana.japanese import is_japanese, is_romaji, is_mixed, is_hiragana
 
 
 @pytest.mark.parametrize(
@@ -73,3 +73,18 @@ def test_is_mixed(test_input, expected):
 
 def test_is_mixed_with_pass_kanji_false():
     assert not is_mixed("お腹A", pass_kanji=False)
+
+
+@pytest.mark.parametrize(
+    "test_input,expected",
+    [
+        ("あ", True),
+        ("ああ", True),
+        ("ア", False),
+        ("A", False),
+        ("あア", False),
+        ("げーむ", True),  # Ignores long dash in Hiragana
+    ],
+)
+def test_is_hiragana(test_input, expected):
+    assert is_hiragana(test_input) == expected
