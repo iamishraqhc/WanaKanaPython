@@ -1,5 +1,14 @@
-from wanakana.constants import HIRAGANA_START, HIRAGANA_END, KATAKANA_START, KATAKANA_END, KANJI_START, KANJI_END, \
-    JAPANESE_RANGES, ROMAJI_RANGES, PROLONGED_SOUND_MARK
+from wanakana.constants import (
+    HIRAGANA_START,
+    HIRAGANA_END,
+    KATAKANA_START,
+    KATAKANA_END,
+    KANJI_START,
+    KANJI_END,
+    JAPANESE_RANGES,
+    ROMAJI_RANGES,
+    PROLONGED_SOUND_MARK,
+)
 
 
 def is_kana(text: str) -> bool:
