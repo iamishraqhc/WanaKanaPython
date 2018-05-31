@@ -1,6 +1,6 @@
 import pytest
 
-from wanakana.japanese import is_japanese, is_romaji, is_mixed, is_hiragana
+from wanakana.japanese import is_japanese
 
 
 @pytest.mark.parametrize(
@@ -28,63 +28,3 @@ from wanakana.japanese import is_japanese, is_romaji, is_mixed, is_hiragana
 )
 def test_is_japanese(test_input, expected):
     assert is_japanese(test_input) == expected
-
-
-@pytest.mark.parametrize(
-    "test_input,expected",
-    [
-        (None, False),
-        ("", False),
-        ("A", True),
-        ("xYz", True),
-        ("Tōkyō and Ōsaka", True),
-        ("Tokyo and Osaka", True),
-        ("あアA", False),
-        ("お願い", False),
-        ("熟成", False),
-        ("a*b&c-d", True),  # Passes Latin punctuation
-        ("0123456789", True),  # Passes Latin numbers
-        ("a！b&cーd", False),  # Fails Zenkaku punctuation
-        ("ｈｅｌｌｏ", False),  # Fails Zenkaku Latin
-    ],
-)
-def test_is_romaji(test_input, expected):
-    assert is_romaji(test_input) == expected
-
-
-@pytest.mark.parametrize(
-    "test_input,expected",
-    [
-        ("Aア", True),
-        ("Aあ", True),
-        ("Aあア", True),
-        ("２あア", False),
-        ("お腹A", True),
-        ("お腹", False),
-        ("腹", False),
-        ("A", False),
-        ("あ", False),
-        ("ア", False),
-    ],
-)
-def test_is_mixed(test_input, expected):
-    assert is_mixed(test_input) == expected
-
-
-def test_is_mixed_with_pass_kanji_false():
-    assert not is_mixed("お腹A", pass_kanji=False)
-
-
-@pytest.mark.parametrize(
-    "test_input,expected",
-    [
-        ("あ", True),
-        ("ああ", True),
-        ("ア", False),
-        ("A", False),
-        ("あア", False),
-        ("げーむ", True),  # Ignores long dash in Hiragana
-    ],
-)
-def test_is_hiragana(test_input, expected):
-    assert is_hiragana(test_input) == expected
