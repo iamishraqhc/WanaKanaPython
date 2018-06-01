@@ -1,6 +1,6 @@
 import pytest
 
-from wanakana.hiragana import is_hiragana, any_hiragana
+from wanakana.hiragana import is_hiragana, any_hiragana, is_char_hiragana
 
 
 @pytest.mark.parametrize(
@@ -33,3 +33,18 @@ def test_is_hiragana(test_input, expected):
 )
 def test_any_hiragana(test_input, expected):
     assert any_hiragana(test_input) == expected
+
+
+@pytest.mark.parametrize(
+    "test_input,expected",
+    [
+        (None, False),
+        ("", False),
+        ("な", True),
+        ("ナ", False),
+        ("n", False),
+        ("!", False),
+    ],
+)
+def test_is_char_hiragana(test_input, expected):
+    assert is_char_hiragana(test_input) == expected

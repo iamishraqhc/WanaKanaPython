@@ -1,6 +1,6 @@
 import pytest
 
-from wanakana.romaji import is_romaji
+from wanakana.romaji import is_romaji, is_char_romaji
 
 
 @pytest.mark.parametrize(
@@ -23,3 +23,19 @@ from wanakana.romaji import is_romaji
 )
 def test_is_romaji(test_input, expected):
     assert is_romaji(test_input) == expected
+
+
+@pytest.mark.parametrize(
+    "test_input,expected",
+    [
+        (None, False),
+        ("", False),
+        ("n", True),
+        ("!", True),
+        ("ナ", False),
+        ("は", False),
+        ("缶", False),
+    ],
+)
+def test_is_char_romaji(test_input, expected):
+    assert is_char_romaji(test_input) == expected

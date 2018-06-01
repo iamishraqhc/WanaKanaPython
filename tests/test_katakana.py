@@ -1,6 +1,6 @@
 import pytest
 
-from wanakana.katakana import is_katakana, any_katakana
+from wanakana.katakana import is_katakana, any_katakana, is_char_katakana
 
 
 @pytest.mark.parametrize(
@@ -35,3 +35,18 @@ def test_is_katakana(test_input, expected):
 )
 def test_any_katakana(test_input, expected):
     assert any_katakana(test_input) == expected
+
+
+@pytest.mark.parametrize(
+    "test_input,expected",
+    [
+        (None, False),
+        ("", False),
+        ("ナ", True),
+        ("は", False),
+        ("n", False),
+        ("!", False),
+    ],
+)
+def test_is_char_katakana(test_input, expected):
+    assert is_char_katakana(test_input) == expected

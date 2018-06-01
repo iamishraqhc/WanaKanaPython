@@ -17,4 +17,7 @@ def any_katakana(text: str) -> bool:
 
 
 def is_char_katakana(char: str) -> bool:
+    if not char:
+        return False
+
     return is_char_in_range(char, KATAKANA_START, KATAKANA_END)

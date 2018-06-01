@@ -1,6 +1,6 @@
 import pytest
 
-from wanakana.japanese import is_japanese
+from wanakana.japanese import is_japanese, is_char_japanese
 
 
 @pytest.mark.parametrize(
@@ -28,3 +28,25 @@ from wanakana.japanese import is_japanese
 )
 def test_is_japanese(test_input, expected):
     assert is_japanese(test_input) == expected
+
+
+@pytest.mark.parametrize(
+    "test_input,expected",
+    [
+        (None, False),
+        ("", False),
+        ("１", True),
+        ("ナ", True),
+        ("は", True),
+        ("缶", True),
+        ("〜", True),
+        ("ｎ", True),
+        ("Ｋ", True),
+        ("1", False),
+        ("n", False),
+        ("K", False),
+        ("!", False),
+    ],
+)
+def test_is_char_japanese(test_input, expected):
+    assert is_char_japanese(test_input) == expected

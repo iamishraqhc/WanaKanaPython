@@ -17,4 +17,7 @@ def any_kanji(text: str) -> bool:
 
 
 def is_char_kanji(char: str) -> bool:
+    if not char:
+        return False
+
     return is_char_in_range(char, KANJI_START, KANJI_END)

@@ -1,6 +1,6 @@
 import pytest
 
-from wanakana.kana import is_kana, any_kana
+from wanakana.kana import is_kana, any_kana, is_char_kana
 
 
 @pytest.mark.parametrize(
@@ -35,3 +35,20 @@ def test_is_kana(test_input, expected):
 )
 def test_any_kana(test_input, expected):
     assert any_kana(test_input) == expected
+
+
+@pytest.mark.parametrize(
+    "test_input,expected",
+    [
+        (None, False),
+        ("", False),
+        ("は", True),
+        ("ナ", True),
+        ("n", False),
+        ("!", False),
+        ("-", False),
+        ("ー", True),
+    ],
+)
+def test_is_char_kana(test_input, expected):
+    assert is_char_kana(test_input) == expected
