@@ -41,10 +41,6 @@ wanakana.isRomaji('Tōkyō and Ōsaka')
 // => true
 ```
 
-## Contributing
-
-Please see [CONTRIBUTING.md](CONTRIBUTING.md)
-
 ## Credits
 
 A partial port of [WanaKana](https://github.com/wanikani/wanakana)
