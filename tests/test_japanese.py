@@ -31,6 +31,17 @@ def test_is_japanese(test_input, expected):
 
 
 @pytest.mark.parametrize(
+    "test_input,regex,expected",
+    [
+        ("≪偽括弧≫", "[≪≫]", True),
+        ("≪偽括弧≫", "[a]", False)
+    ],
+)
+def test_is_japanese_with_regex(test_input, regex, expected):
+    assert is_japanese(test_input, regex) == expected
+
+
+@pytest.mark.parametrize(
     "test_input,expected",
     [
         (None, False),
