@@ -13,31 +13,37 @@ pip install wanakana
 
 ```python
 from wanakana import hiragana
+hiragana.is_hiragana("げーむ")
+
+or
+
+from wanakana.hiragana import is_hiragana
+is_hiragana("げーむ")
 ```
 
 ## Documentation
 
-See the docs folder
+See original [WanaKana docs](http://wanakana.com/docs/global.html) as the functions are near identical.
 
 ## Quick Reference
 
 ```python
-wanakana.isJapanese('泣き虫。！〜２￥ｚｅｎｋａｋｕ')
+is_japanese("泣き虫。！〜２￥ｚｅｎｋａｋｕ")
 // => true
 
-wanakana.isKana('あーア')
+is_kana("あーア")
 // => true
 
-wanakana.isHiragana('げーむ')
+is_hiragana("げーむ")
 // => true
 
-wanakana.isKatakana('ゲーム')
+is_katakana("ゲーム")
 // => true
 
-wanakana.isKanji('切腹')
+is_kanji("切腹")
 // => true
 
-wanakana.isRomaji('Tōkyō and Ōsaka')
+is_romaji("Tōkyō and Ōsaka")
 // => true
 ```
 
@@ -47,4 +53,4 @@ A partial port of [WanaKana](https://github.com/wanikani/wanakana)
 
 ## License
 
-Source files of this project are available under MIT License. See [LICENSE](LICENSE)
+Source files of this project are available under the MIT License. See [LICENSE](LICENSE)

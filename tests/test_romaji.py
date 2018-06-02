@@ -26,6 +26,17 @@ def test_is_romaji(test_input, expected):
 
 
 @pytest.mark.parametrize(
+    "test_input,regex,expected",
+    [
+        ("a！b&cーd", "[！ー]", True),
+        ("a！b&cーd", "[?]", False)
+    ],
+)
+def test_is_japanese_with_regex(test_input, regex, expected):
+    assert is_romaji(test_input, regex) == expected
+
+
+@pytest.mark.parametrize(
     "test_input,expected",
     [
         (None, False),
