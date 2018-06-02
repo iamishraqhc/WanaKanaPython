@@ -1,11 +1,11 @@
 import setuptools
 
-with open("README.md", "r") as fh:
+with open("README.md", "r", encoding="utf8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="wanakana",
-    version="1.0.0",
+    version="1.0.1",
     author="Luke Casey",
     author_email="lc94dev@gmail.com",
     description="A library to assist in detecting Japanese text",
