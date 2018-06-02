@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf8") as fh:
 
 setuptools.setup(
     name="wanakana",
-    version="1.0.0",
+    version="1.0.1",
     author="Luke Casey",
     author_email="lc94dev@gmail.com",
     description="A library to assist in detecting Japanese text",
